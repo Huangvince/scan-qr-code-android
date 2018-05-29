@@ -1,0 +1,16 @@
+{
+  "name": "scan-qr-code-android",
+  "version": "1.0.0",
+  "description": "scan qrcode in android",
+  "cordova": {
+    "id": "scan-qr-code-android",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Vince Huang",
+  "license": "Apache-2.0"
+}

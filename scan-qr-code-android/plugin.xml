@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="scan-qr-code-android" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>scan-qr-code-android</name>
+    <js-module name="scanQRCode" src="www/scan-qr-code-android.js">
+        <clobbers target="window.scanQRCode" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ScanQRCodePlugin" >
+                <param name="android-package" value="org.apache.cordova.scanqrcode.ScanQRCodePlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <resource-file src="src/android/custom_grid_scan_line.png" target="res/mipmap/custom_grid_scan_line.png" />
+        <resource-file src="src/android/activity_scan.xml" target="res/layout/activity_scan.xml" />
+        <source-file src="src/android/ScanQRCodePlugin.java" target-dir="src/org/apache/cordova/scanqrcode" />
+        <source-file src="src/android/ScanCodeComponent.java" target-dir="src/org/apache/cordova/scanqrcode" />
+        <framework src="com.android.support:appcompat-v7:27.0.2" />
+        <framework src="com.android.support:support-v4:27.0.2" />
+        <framework src="pub.devrel:easypermissions:1.0.1" />
+        <framework src="cn.bingoogolapple:bga-qrcode-zbar:1.2.1" />
+        <framework src="com.android.support:recyclerview-v7:27.0.2" />
+        <framework src="cn.bingoogolapple:bga-baseadapter:1.2.9@aar" />
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>        
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="org.apache.cordova.scanqrcode.ScanCodeComponent" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>       
+        </config-file>
+    </platform>
+</plugin>
